@@ -1,0 +1,39 @@
+// this file is used vor global override styles set by capsulated components
+// f.i. setting grid row background color doesn't work in the concrete component, it has to be global
+
+.dialog-info {
+  .k-window-titlebar {
+    background-color: lightgray;
+  }
+
+  button {
+    background-color: lightgray;
+  }
+}
+
+.dialog-success {
+  .k-window-titlebar {
+    background-color: $success;
+  }
+  button {
+    background-color: lightgray;
+  }
+}
+
+.dialog-warning {
+  .k-window-titlebar {
+    background-color: $warning;
+  }
+  button {
+    background-color: lightgray;
+  }
+}
+
+.dialog-error {
+  .k-window-titlebar {
+    background-color: $error;
+  }
+  button {
+    background-color: lightgray;
+  }
+}

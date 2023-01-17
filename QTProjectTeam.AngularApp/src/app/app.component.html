@@ -1,0 +1,162 @@
+﻿<kendo-appbar position="top" positionMode="sticky">
+  <kendo-appbar-section>
+    <button kendoButton fillMode="flat" (click)="drawer.toggle()">
+      <kendo-icon name="menu"></kendo-icon>
+    </button>
+  </kendo-appbar-section>
+  <kendo-appbar-section>
+    <h1 class="title">{{ "App.Name" | translate }}</h1>
+  </kendo-appbar-section>
+
+  <kendo-appbar-spacer width="32px"></kendo-appbar-spacer>
+
+  <kendo-appbar-section class="horizontal-top-menu">
+    <ul>
+      <li><span>Menu 1</span></li>
+      <li><span>Menu 2</span></li>
+      <!--<li><span>About</span></li>
+      <li><span>Contacts</span></li>-->
+      <!--
+    <span class="k-appbar-separator"></span>
+
+      -->
+    </ul>
+  </kendo-appbar-section>
+
+  <kendo-appbar-spacer></kendo-appbar-spacer>
+
+  <kendo-appbar-section class="actions" *ngIf="isAuthenticated">
+    <button
+      kendoButton
+      fillMode="flat"
+      #anchorNotifications
+      (click)="
+        notifications.length > 0 &&
+          (notificationMenuExpanded = !notificationMenuExpanded)
+      "
+    >
+      <kendo-badge-container>
+        <kendo-icon name="bell"></kendo-icon>
+        <kendo-badge
+          *ngIf="notifications.length > 0"
+          shape="dot"
+          themeColor="warning"
+          size="small"
+          position="inside"
+        ></kendo-badge>
+      </kendo-badge-container>
+    </button>
+
+    <kendo-popup
+      [anchor]="anchorNotifications"
+      [anchorAlign]="{ horizontal: 'right', vertical: 'bottom' }"
+      [popupAlign]="{ horizontal: 'right', vertical: 'top' }"
+      (anchorViewportLeave)="
+        notificationMenuExpanded = !notificationMenuExpanded
+      "
+      *ngIf="notificationMenuExpanded"
+    >
+      <div class="notification-menu">
+        <ul>
+          <li>Neuigkeit 1</li>
+          <li>Neuigkeit 2</li>
+        </ul>
+      </div>
+    </kendo-popup>
+  </kendo-appbar-section>
+
+  <kendo-appbar-section *ngIf="isAuthenticated">
+    {{ authenticatedUser.email }}
+  </kendo-appbar-section>
+
+  <kendo-appbar-section class="actions">
+    <button
+      #anchor
+      kendoButton
+      class="overflow-button"
+      fillMode="flat"
+      (click)="accountMenuExpanded = !accountMenuExpanded"
+    >
+      <kendo-avatar icon="user" shape="circle" width="26px" height="26px">
+      </kendo-avatar>
+    </button>
+    <kendo-popup
+      [anchor]="anchor"
+      (anchorViewportLeave)="accountMenuExpanded = !accountMenuExpanded"
+      *ngIf="accountMenuExpanded"
+    >
+      <div class="account-menu">
+        <ul>
+          <ng-container *ngIf="!isAuthenticated">
+            <li *ngIf="!isAuthenticated">
+              <a
+                [routerLink]="['./auth/login']"
+                (click)="accountMenuExpanded = false"
+                >{{ "Account.Login" | translate }}</a
+              >
+            </li>
+          </ng-container>
+
+          <ng-container *ngIf="isAuthenticated">
+            <li>
+              <a
+                [routerLink]="['./auth/change-password']"
+                (click)="accountMenuExpanded = false"
+                >{{ "Account.ChangePassword" | translate }}</a
+              >
+            </li>
+            <li>
+              <a
+                [routerLink]="['./user/preferences']"
+                (click)="accountMenuExpanded = false"
+                >{{ "Account.UserPreferences" | translate }}</a
+              >
+            </li>
+            <li>
+              <a (click)="logout(); accountMenuExpanded = false">{{
+                "Account.Logout" | translate: { user: authenticatedUser.email }
+              }}</a>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    </kendo-popup>
+  </kendo-appbar-section>
+</kendo-appbar>
+
+<kendo-drawer-container>
+  <kendo-drawer
+    #drawer
+    id="vertical-navigation"
+    mode="push"
+    [mini]="true"
+    [(expanded)]="sideMenuExpanded"
+    [autoCollapse]="false"
+  >
+    <ng-template kendoDrawerTemplate>
+      <ng-container *ngIf="isAuthenticated">
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a
+              [routerLink]="['./home']"
+              class="nav-link"
+              routerLinkActive="active"
+              >{{ "App.SiteLinks.Home" | translate }}</a
+            >
+          </li>
+        </ul>
+      </ng-container>
+
+      <div *ngIf="sideMenuExpanded" class="static-footer-info">
+        <p>{{ "App.Version" | translate }}: {{ versionNumber }}</p>
+      </div>
+    </ng-template>
+  </kendo-drawer>
+
+  <kendo-drawer-content>
+    <main class="content-wrapper col">
+      <router-outlet></router-outlet>
+      <div kendoDialogContainer></div>
+    </main>
+  </kendo-drawer-content>
+</kendo-drawer-container>

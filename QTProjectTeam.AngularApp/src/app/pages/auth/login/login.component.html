@@ -1,0 +1,71 @@
+﻿<div class="login-page">
+  <form [formGroup]="form" (ngSubmit)="login()">
+    <fieldset class="k-form-fieldset">
+      <legend class="k-form-legend">
+        {{ "Pages.Login.Title" | translate }}
+      </legend>
+
+      <kendo-formfield>
+        <kendo-label [for]="email"
+          >{{ "Pages.Login.Email" | translate }}
+        </kendo-label>
+        <kendo-textbox
+          type="email"
+          #email
+          formControlName="email"
+          required="true"
+        ></kendo-textbox>
+        <kendo-formerror>
+          {{ "Pages.Login.Errors.Email" | translate }}</kendo-formerror
+        >
+      </kendo-formfield>
+
+      <kendo-formfield>
+        <kendo-label [for]="password"
+          >{{ "Pages.Login.Password" | translate }}
+        </kendo-label>
+        <kendo-textbox
+          type="password"
+          #password
+          formControlName="password"
+          required="true"
+        ></kendo-textbox>
+
+        <ng-template kendoTextBoxSuffixTemplate>
+          <button
+            kendoButton
+            look="clear"
+            icon="eye"
+            (click)="toggleVisibility()"
+          ></button>
+        </ng-template>
+        <kendo-formerror>
+          {{ "Pages.Login.Errors.Password" | translate }}</kendo-formerror
+        >
+      </kendo-formfield>
+
+      <div class="k-form-buttons">
+        <button
+          class="w-100"
+          kendoButton
+          themeColor="primary"
+          type="submit"
+          [disabled]="form.invalid || loading.login"
+        >
+          {{ "Pages.Login.Actions.Login" | translate }}
+        </button>
+      </div>
+      <div class="k-form-buttons">
+        <button
+          class="w-100"
+          kendoButton
+          themeColor="primary"
+          fillMode="link"
+          routerLink="/auth/forgot-password"
+        >
+          {{ "Pages.Login.Actions.ForgotPassword" | translate }}
+        </button>
+      </div>
+    </fieldset>
+  </form>
+</div>

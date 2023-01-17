@@ -1,0 +1,26 @@
+﻿RuleType:				EntityType|Property|EntityValue|PropertyValue
+
+EntityType...			Diese Regel bezieht sich auf dem Typ der Entitaet.
+Property...				Diese Regel bezieht sich auf eine Eigenschaft der Entitaet.
+EntityValue...			Diese Regel bezieht sich auf einen bestimmten Eintrag einer Entitaet.
+PropertyValue...		Diese Regel bezieht sich auf einen bestimmten Eigenschafswert eines Eintrages.
+
+EntityType:				Name der Entitaet als Text (CaseSensitive). 
+						Zum Beispiel die Entitaet "Ordner".
+
+RelationshipEntityType:	Name der Beziehungsentitaet als Text (CaseSensitive). 
+						Zum Beispiel die Entitaet "Ordner".
+
+PropertyName:			Name der Eigenschaft einer Entitaet (CaseSensitive).
+						Zum Beispiel die Eigenschaft "Name" der Entitaaet "Ordner".
+
+EntityValue:			Referenz zu einem bestimmten Eintrag einer Entitaet (String). 
+						Zum Beispiel die Id oder Guid (wenn definiert). Der Wert muss im Bezug auf die Entitaet eindeutig sein.
+
+PropertyValue:			Wert einer Eigenschaft von einer Entitaet.
+
+AccessType:				Identity|Role|EntityRef|All
+						Diese Information zeigt an, zu welcher Zugriffseinheit diese Regel zugeordnet ist.
+
+AccessValue:			Guid der Role|...|Guid der Identity|RefToEntity
+

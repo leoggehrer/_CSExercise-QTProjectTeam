@@ -1,0 +1,108 @@
+kendo-drawer-container {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  height: 100%;
+}
+
+kendo-drawer {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+kendo-drawer-content {
+  padding-top: 10px;
+}
+
+.k-appbar {
+  height: 60px !important;
+}
+
+.title {
+  font-size: 18px;
+  margin: 0;
+}
+kendo-badge-container {
+  margin-right: 8px;
+}
+
+.horizontal-top-menu {
+  ul {
+    font-size: 14px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  li {
+    margin: 0 9px;
+  }
+  li:hover {
+    cursor: pointer;
+    color: #d6002f;
+  }
+}
+
+.actions .k-button {
+  padding: 0;
+}
+
+.content-wrapper {
+  padding: 10px;
+}
+
+#vertical-navigation {
+  position: sticky;
+}
+
+.static-footer-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.account-menu {
+  ul {
+    font-size: 14px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0 9px;
+      padding: 10px;
+    }
+    li:hover {
+      cursor: pointer;
+      color: #d6002f;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.notification-menu {
+  ul {
+    font-size: 14px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0 9px;
+      padding: 10px;
+    }
+    li:hover {
+      cursor: pointer;
+      color: #d6002f;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+}

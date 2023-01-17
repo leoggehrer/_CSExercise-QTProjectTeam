@@ -1,0 +1,17 @@
+@import "./mixins";
+
+html,
+body,
+app-root {
+  height: 100%;
+  padding: 0;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}

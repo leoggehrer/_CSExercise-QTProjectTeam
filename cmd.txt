@@ -1,0 +1,4 @@
+﻿
+dotnet ef migrations add InitDb --startup-project QTProjectTeam.ConApp --project QTProjectTeam.Logic
+
+dotnet ef database update --startup-project QTProjectTeam.ConApp --project QTProjectTeam.Logic
